@@ -1,0 +1,97 @@
+{
+  "preamble": {
+    "title": "pol/pp",
+    "description": "Aiken contracts for project 'pol/pp'",
+    "version": "0.0.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.21+unknown"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "miniting.minting.mint",
+      "redeemer": {
+        "title": "redeemer",
+        "schema": {
+          "$ref": "#/definitions/miniting~1Action"
+        }
+      },
+      "parameters": [
+        {
+          "title": "utxo_ref",
+          "schema": {
+            "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+          }
+        }
+      ],
+      "compiledCode": "590231010100229800aba2aba1aba0aab9faab9eaab9dab9a488888896600264653001300800198041804800cdc3a400130080024888966002600460106ea800e266446644b300130060018acc004c034dd5004400a2c80722b300130030018acc004c034dd5004400a2c80722c805900b0cc004c8c8cc004004dd59808180898089808980898069baa0052259800800c00e2646644b30013372201000515980099b8f0080028800c01900f44cc014014c05401100f1bae300e0013756601e0026022002807852f5bded8c12259800800c52f5c113300f300d301000133002002301100140392232330010010032259800800c528c56600260066eb4c048006266004004602600314a080690104c8cc004004dd618079808180818081808180818081808180818061baa0042259800800c528456600266e3cdd71808000a451dabcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd123400008a518998010011808800a0164038911119192cc004c028c040dd5006456600264660020026eb0c054c048dd5005112cc00400629422b30013375e602c60266ea8c0580040662946266004004602e00280890144566002600e646600200200e44b30010018a4001133700900119801001180b800a0288acc004cc010c0040188c0200062b30010038998021800803119b8848000006294100f4528201e8a50403d14a0807a200680788c008004c00c00c60146ea8018dd7180618049baa003370e90014590070c020004c00cdd5004452689b2b200201",
+      "hash": "2e46272964b9256c33647038d76e11b7771cd75ab2dfb0d5fb518df5"
+    },
+    {
+      "title": "miniting.minting.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "parameters": [
+        {
+          "title": "utxo_ref",
+          "schema": {
+            "$ref": "#/definitions/cardano~1transaction~1OutputReference"
+          }
+        }
+      ],
+      "compiledCode": "590231010100229800aba2aba1aba0aab9faab9eaab9dab9a488888896600264653001300800198041804800cdc3a400130080024888966002600460106ea800e266446644b300130060018acc004c034dd5004400a2c80722b300130030018acc004c034dd5004400a2c80722c805900b0cc004c8c8cc004004dd59808180898089808980898069baa0052259800800c00e2646644b30013372201000515980099b8f0080028800c01900f44cc014014c05401100f1bae300e0013756601e0026022002807852f5bded8c12259800800c52f5c113300f300d301000133002002301100140392232330010010032259800800c528c56600260066eb4c048006266004004602600314a080690104c8cc004004dd618079808180818081808180818081808180818061baa0042259800800c528456600266e3cdd71808000a451dabcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd123400008a518998010011808800a0164038911119192cc004c028c040dd5006456600264660020026eb0c054c048dd5005112cc00400629422b30013375e602c60266ea8c0580040662946266004004602e00280890144566002600e646600200200e44b30010018a4001133700900119801001180b800a0288acc004cc010c0040188c0200062b30010038998021800803119b8848000006294100f4528201e8a50403d14a0807a200680788c008004c00c00c60146ea8018dd7180618049baa003370e90014590070c020004c00cdd5004452689b2b200201",
+      "hash": "2e46272964b9256c33647038d76e11b7771cd75ab2dfb0d5fb518df5"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "title": "ByteArray",
+      "dataType": "bytes"
+    },
+    "Int": {
+      "dataType": "integer"
+    },
+    "cardano/transaction/OutputReference": {
+      "title": "OutputReference",
+      "description": "An `OutputReference` is a unique reference to an output on-chain. The `output_index`\n corresponds to the position in the output list of the transaction (identified by its id)\n that produced that output",
+      "anyOf": [
+        {
+          "title": "OutputReference",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "transaction_id",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "output_index",
+              "$ref": "#/definitions/Int"
+            }
+          ]
+        }
+      ]
+    },
+    "miniting/Action": {
+      "title": "Action",
+      "anyOf": [
+        {
+          "title": "Mint",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        },
+        {
+          "title": "Cancel",
+          "dataType": "constructor",
+          "index": 1,
+          "fields": []
+        }
+      ]
+    }
+  }
+}
